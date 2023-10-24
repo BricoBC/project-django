@@ -19,12 +19,12 @@ python3 -m venv venv
 ```bash
 source ./venv/bin/activate
 ```
--Hacer un documento txt en donde esten las dependencias que utilicemos.
+- Hacer un documento txt en donde esten las dependencias que utilicemos.
 ```python
 pip freeze > requirements.txt
 ```
 
--Instalar dependencias:
+- Instalar dependencias:
 ```python
 pip install -r requirements.txt
 ```
