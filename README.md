@@ -144,6 +144,7 @@ urlpatterns = [
     # Recibe dos parametros:
     # 1) ruta del url
     # 2) vista del proyecto o el include para las url's de la app
+    #Nota para include: la ruta final = ruta que se indique en éste archivo + la ruta que se tenga en su archivo url
 ]
 
 ```
