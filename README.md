@@ -151,5 +151,55 @@ urlpatterns = [
 7.- Ejecutar el proyecto y poner la ruta, en mi caso seria de la siguiente forma el url: *http://127.0.0.1:8000/* ó *http://127.0.0.1:8000/admin* ó *http://127.0.0.1:8000/about*, depende de la cuál quieras acceder.
 
 
+## Crear tablas de Bases de Datos
+1.- Acceder al archivo de *__models.py__* de la aplicación.
+2.- Se debe de tener el siguiente código para poder crear una tabla:
+```python
+from django.db import models
+
+# Las clases son las tablas
+class Project(models.Model):
+    name = models.CharField(max_length=255)
+    #Los atributos con las columnas
+#Tabla: Project, con la columna id y name.
+
+```
+A continuación dejo la documentación en donde existe los diferentes tipos de datos que puede adquierir el campo de una columna.
+[Ir a Documentación...](https://docs.djangoproject.com/en/4.2/ref/models/fields/#model-field-types)
+
+3.- Acceder al archivo de *__settings.py__* del proyecto
+4.- Existe un array con el nombre de __INSTALLED_APPS__, al final hay que agregar el nombre de la aplicación, esto con el fin para poder unificar las tablas de administración y que contiene el proyecto por defecto con las que estamos creando.
+
+```python
+INSTALLED_APPS = [
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'myapp', #Está es mi aplicación
+]
+```
+5.- Ejecutar el siguiente comando:
+```python
+python manage.py makemigrations
+```
+En caso de que queremos especificar de uno solo seria:
+```python
+python manage.py makemigrations myapp
+```
+Con éste comando lo que se hace es compilar las clases.
+
+6.- Ejecutar el siguiente comando:
+```python
+python manage.py migrate
+```
+En caso de que queremos especificar de uno solo seria:
+```python
+python manage.py migrate myapp
+```
+Con éste comando se ejecuta todas las compilaciones de las clases para convertirlas en las tablas.
+
 ### Autor
 [@BricoBC](https://github.com/BricoBC)
