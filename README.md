@@ -202,7 +202,8 @@ python manage.py migrate myapp
 Con éste comando se ejecuta todas las compilaciones de las clases para convertirlas en las tablas.
 
 NOTA: Django viene por defecto con SQLite, en debido caso que se quiera modificar hay que hacer lo siguiente:
- 
+
+### Cambiar base de datos 
 1.- Ir a *__settings.py__* del proyecto
 
 2.- Encontrar el dicionario que tiene como nombre __DATABASES__
