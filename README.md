@@ -201,6 +201,24 @@ python manage.py migrate myapp
 ```
 Con éste comando se ejecuta todas las compilaciones de las clases para convertirlas en las tablas.
 
+NOTA: Django viene por defecto con SQLite, en debido caso que se quiera modificar hay que hacer lo siguiente:
+ 
+1.- Ir a *__settings.py__* del proyecto
+
+2.- Encontrar el dicionario que tiene como nombre __DATABASES__
+```python
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}
+```
+3.- Modificar el engine por el que se vaya a utilizar, dejo a continuación la pagina en donde se encuentra las conexiones con las demás bases de datos:
+['Ir a la documentación...'](https://docs.djangoproject.com/en/4.2/ref/databases/)
+ 
+4.- Modificar el nombre de como se va a registrar la base de datos, recomiendo *'db.base_de_datos'*
+
 *Ya para este punto existen tablas en el archivo db.sqlite3, si se quiere ver todas las tablas es necesario tener una herramienta de software que se utiliza como cliente universal para base de datos. En mi caso utilizo __dbeaver__, dejo a continuación los pasos para hacer uso de éste software gratuito.*
 ## DBeaver
 1.- Instalar el software: [Ir a la página de descarga...](https://dbeaver.io/download/)
