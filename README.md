@@ -163,6 +163,11 @@ class Project(models.Model):
     #Los atributos con las columnas
 #Tabla: Project, con la columna id y name.
 
+class Task(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    project = models.ForeignKey(Project, on_delete=models.CASCADE) #models.cascade hace que si se elimina un proyecto sus tareas también serán eliminadas.
+
 ```
 A continuación dejo la documentación en donde existe los diferentes tipos de datos que puede adquierir el campo de una columna.
 [Ir a Documentación...](https://docs.djangoproject.com/en/4.2/ref/models/fields/#model-field-types)
