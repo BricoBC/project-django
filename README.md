@@ -109,6 +109,31 @@ v myapp
 - tests.py: Es para realizar el testing de las vistas o de los archivos generados.
 - **views:** Es el fichero en donde se va a almacenar el código html para las vistas, lo que va a poder ver el usuario.
 
+## Crear un vista
+Para agregar una vista es necesario tener una app y un proyecto.
+1.- Se accede al archivo de *__views.py__* de la app.
+2.- Se agrega lo siguiente al archivo:
+``` python
+from django.http import HttpResponse
+
+def hi(request):
+    return HttpResponse("Hello world")
+```
+3.- Se accede al archivo de *__urls.py__* del proyecto:
+4.- Se debe de tener el siguiente código:
+``` python
+from django.contrib import admin
+from django.urls import path
+from myapp import views
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('', views.hi ), #Accede a la ruta, ejecuta la función.
+]
+```
+5.- Ejecutar el proyecto y poner la ruta, en mi caso seria de la siguiente forma el url: *http://127.0.0.1:8000/* ó *http://127.0.0.1:8000/admin*, depende de la cuál quieras acceder.
+
+
 
 
 
