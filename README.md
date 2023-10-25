@@ -110,31 +110,44 @@ v myapp
 - **views:** Es el fichero en donde se va a almacenar el código html para las vistas, lo que va a poder ver el usuario.
 
 ## Crear un vista
-Para agregar una vista es necesario tener una app y un proyecto.
+Para agregar una vista es necesario tener almenos una app y un proyecto.
 1.- Se accede al archivo de *__views.py__* de la app.
 2.- Se agrega lo siguiente al archivo:
 ``` python
 from django.http import HttpResponse
 
 def hi(request):
-    return HttpResponse("Hello world")
+    return HttpResponse("<h1>Hello world</h1>")
 ```
-3.- Se accede al archivo de *__urls.py__* del proyecto:
-4.- Se debe de tener el siguiente código:
+Hay que replicar la acción previa correspondiente a las vistas que se necesiten.
+3.- Se crea un nuevo archivo en la carpeta de la app con el nombre de *__urls.py__*
+4.- Se debe de tener el siguiente código dentro del archivo creado:
 ``` python
-from django.contrib import admin
 from django.urls import path
-from myapp import views
+from . import views
+
+urlpatterns = [
+    path('', views.hi ), #Accede a la ruta, ejecuta la función.
+    path('about', views)
+]
+
+```
+5.- Acceder al archivo _**url.py**_ del proyecto
+6.- Se debe de tener el siguiene código dentro del archivo:
+```python
+from django.contrib import admin
+from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.hi ), #Accede a la ruta, ejecuta la función.
+    path('', include("myapp.urls") ), 
+    # Recibe dos parametros:
+    # 1) ruta del url
+    # 2) vista del proyecto o el include para las url's de la app
 ]
+
 ```
-5.- Ejecutar el proyecto y poner la ruta, en mi caso seria de la siguiente forma el url: *http://127.0.0.1:8000/* ó *http://127.0.0.1:8000/admin*, depende de la cuál quieras acceder.
-
-
-
+7.- Ejecutar el proyecto y poner la ruta, en mi caso seria de la siguiente forma el url: *http://127.0.0.1:8000/* ó *http://127.0.0.1:8000/admin* ó *http://127.0.0.1:8000/about*, depende de la cuál quieras acceder.
 
 
 ### Autor
