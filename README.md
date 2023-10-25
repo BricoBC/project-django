@@ -204,10 +204,15 @@ Con éste comando se ejecuta todas las compilaciones de las clases para converti
 *Ya para este punto existen tablas en el archivo db.sqlite3, si se quiere ver todas las tablas es necesario tener una herramienta de software que se utiliza como cliente universal para base de datos. En mi caso utilizo __dbeaver__, dejo a continuación los pasos para hacer uso de éste software gratuito.*
 ## DBeaver
 1.- Instalar el software: [Ir a la página de descarga...](https://dbeaver.io/download/)
+
 2.- Abrir el sofware.
+
 3.- Hacer clic en el icono de un enchufe que se encuentra abajo de "File".
+
 4.- Se va abrir una pestaña nueva en donde solicita la base de datos, se va a escribir "SQLite", le damos doble clic a la primera opción que muestre.
+
 5.- Va a pedir la ubicación para indicar hay que hacer clic en "Create" y se va a localizar hasta donde encuentre el archivo correspondiente.
+
 6.- Hacer clic en "Finish"
 Cuando sea tu primera vez con esa base de datos te va a indicar que se tiene que instalar el driver asi que lo permites y ya podrás visualizar la base de datos.
 
