@@ -242,5 +242,60 @@ Cuando sea tu primera vez con esa base de datos te va a indicar que se tiene que
 
 !['DBeaver'](https://dbeaver.io/wp-content/uploads/2015/09/beaver-head.png)
 
+## Django shell
+Para ingresar los valores en las tablas se puede hacer de la siguiente forma:
+1.- Se ejecuta el siguiente comando:
+```python
+python manage.py shell
+```
+Ésto activara el shell de python
+
+2.- Indicar los modelos con los que vamos a trabajar.
+```python
+from myapp.models import Project, Task
+```
+### Guardar un valor
+
+```python
+p = Project(name='Elaborar una página web')
+p
+p.save()
+```
+Recordemos que mi modelo de Project, tiene la columna de __id__ que es autoincrementable y __name__ que recibe un string.
+
+### Obtener un elemento
+```python
+Projects.objects.get(id=1)
+```
+Con objects.get recibe como parametro el nombre de la columna y el valor exacto que se busca obtener.
+
+### Filtrar
+```python
+Project.objects.filter(name__startswith="Elabor")
+```
+__output:__ *<QuerySet [<Project: Project object (1)>, <Project: Project object (2)>]>*
+
+### Salir de la consola
+```python
+exit()
+```
+
+### Guardar un valor de una tabla dependiente
+En mi caso __Task__ esta relacionada a un valor que se tenga en __Project__, asi que primero debo de asignar un proyecto y después al proyecto le asigno sus tareas, por ende su código quedaria de la siguiente forma:
+```python
+p = Project.object.get(id=1)
+#En p tiene el id 1
+p.task_set.create(title="Hacer el mockup", 
+           description="Usar uizard para el diseño de la pagina web")
+
+```
+
+Para ver todas las tareas que tiene el id 1, se hace lo siguiente:
+```python
+p = Project.objects.get(id=1)
+p.task_set.all()
+```
+
+
 ### Autor
 [@BricoBC](https://github.com/BricoBC)
