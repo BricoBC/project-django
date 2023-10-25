@@ -61,8 +61,8 @@ db.sqlite3
 manage.py
 ```
 
-- __pycache__: Es para guardar código que ya fue compilado y pueda ser ejecutado más rápido.
-- __init__.py: Es para indicar que mysite es un modulo.
+- _pycache_: Es para guardar código que ya fue compilado y pueda ser ejecutado más rápido.
+- _init_.py: Es para indicar que mysite es un modulo.
 - asgi.py: Es para poder configurar el servicio que puede proveer django.
 - **settings.py:** Es para ver toda la configuración del proyecto.
 - **urls.py**: Es en donde se indica los urls que los usuarios pueden visitar.
@@ -100,8 +100,8 @@ v myapp
 |   tests.py
 |   views.py
 ```
-- __pycache__: Es para guardar código que ya fue compilado y pueda ser ejecutado más rápido.
-- migration: Es la carpeta en donde se almacena la información de la Base de datos, tiene un archivo __init__ de igual manera.
+- _pycache_: Es para guardar código que ya fue compilado y pueda ser ejecutado más rápido.
+- _migration_: Es la carpeta en donde se almacena la información de la Base de datos, tiene un archivo __init__ de igual manera.
 - __init__: Es para que se pueda considerar un modulo la app.
 - admin: Es para configurar todo el panel de los permisos.
 - apps.py: Es para poder configurar todo acerca de la aplicación.
