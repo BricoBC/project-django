@@ -363,6 +363,43 @@ urlpatterns = [
     path('task/<int:id>', views.task)
 ]
 ```
+## 8) Panel de administrador
+En la __terminal__ se va a ejecutar lo siguiente:
+```python
+python manage.py createsuperuser
+```
+- Agrega un usuario:
+- Agrega un correo:
+- Agrega una contraseña:
+Esto es para crear un super usuario, asi que se accede a la ruta *http://127.0.0.1:8000/admin/* e inicia sesión.
 
+### 8.1) Registrar las tablas de la aplicación
+Cuando se crea una aplicación se crea un archivo __admin.py__, aquí se va a acceder y agregar lo siguiente:
+```python
+from django.contrib import admin
+from .models import Project, Task # Se agrega las tablas que se quiere registrar
+
+admin.site.register(Project)
+admin.site.register(Task)
+#Se hace el registro de cada tabla, en mi caso la tabla Project y Taks.
+```
+Recargas nuevamente la página y te va a aparecer el nombre de la aplicación y las tablas que se registraron.
+Accedes a la tabla dando clic al nombre de la tabla.
+
+### Modificar la forma en como se muestra la información de la tabla
+Cuando se accede a la tabla muy probablemente salga una tabla y se enliste los datos como *"Project object(1)"*, para modificar eso hay que hacer lo siguiente:
+1. Se accede al archivo __models.py__
+2. Localizas la clase de la tabla que se va a modificar la información, en mi caso es *__Task__*
+3. Ingresas una función dentro de tu clase, así:
+```python
+class Task(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    
+    def __str__(self) -> str:
+        return self.title + " del proyecto " + self.project.name
+```
+Ya sólo queda recargar la página y ver el cómo devuelve la información.
 ## __Autor__
 [@BricoBC](https://github.com/BricoBC)
