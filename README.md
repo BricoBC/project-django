@@ -33,12 +33,12 @@ Ya una vez que se comenzó con buenas practicas no hay que olvidar estar guardan
 ## 1) Primeros pasos: Instalación
  Primero hay que ubicarnos en a ubicación en donde se quiere tener el proyecto, ya una vez estando en el directorio se hace lo siguiente:
 
- 1.- Instalar django:
+1. Instalar django:
  ```python
 python3 -m pip install Django
 ```
 
-2- Verificar la versión
+2. Verificar la versión
  ```python
 python3 -m pip install Django
 ```
@@ -111,17 +111,20 @@ v myapp
 
 ## 4) Crear un vista
 Para agregar una vista es necesario tener almenos una app y un proyecto.
-1.- Se accede al archivo de *__views.py__* de la app.
-2.- Se agrega lo siguiente al archivo:
+1. Se accede al archivo de *__views.py__* de la app.
+2. Se agrega lo siguiente al archivo:
+
 ``` python
 from django.http import HttpResponse
 
 def hi(request):
     return HttpResponse("<h1>Hello world</h1>")
 ```
+
 Hay que replicar la acción previa correspondiente a las vistas que se necesiten.
-3.- Se crea un nuevo archivo en la carpeta de la app con el nombre de *__urls.py__*
-4.- Se debe de tener el siguiente código dentro del archivo creado:
+
+3. Se crea un nuevo archivo en la carpeta de la app con el nombre de *__urls.py__*
+4. Se debe de tener el siguiente código dentro del archivo creado:
 ``` python
 from django.urls import path
 from . import views
@@ -132,8 +135,8 @@ urlpatterns = [
 ]
 
 ```
-5.- Acceder al archivo _**url.py**_ del proyecto
-6.- Se debe de tener el siguiene código dentro del archivo:
+5. Acceder al archivo _**url.py**_ del proyecto
+6. Se debe de tener el siguiene código dentro del archivo:
 ```python
 from django.contrib import admin
 from django.urls import path, include
@@ -148,12 +151,12 @@ urlpatterns = [
 ]
 
 ```
-7.- Ejecutar el proyecto y poner la ruta, en mi caso seria de la siguiente forma el url: *http://127.0.0.1:8000/* ó *http://127.0.0.1:8000/admin* ó *http://127.0.0.1:8000/about*, depende de la cuál quieras acceder.
+7. Ejecutar el proyecto y poner la ruta, en mi caso seria de la siguiente forma el url: *http://127.0.0.1:8000/* ó *http://127.0.0.1:8000/admin* ó *http://127.0.0.1:8000/about*, depende de la cuál quieras acceder.
 
 
 ## 5) Crear tablas de Bases de Datos
-1.- Acceder al archivo de *__models.py__* de la aplicación.
-2.- Se debe de tener el siguiente código para poder crear una tabla:
+1. Acceder al archivo de *__models.py__* de la aplicación.
+2. Se debe de tener el siguiente código para poder crear una tabla:
 ```python
 from django.db import models
 
@@ -172,8 +175,8 @@ class Task(models.Model):
 A continuación dejo la documentación en donde existe los diferentes tipos de datos que puede adquierir el campo de una columna.
 [Ir a Documentación...](https://docs.djangoproject.com/en/4.2/ref/models/fields/#model-field-types)
 
-3.- Acceder al archivo de *__settings.py__* del proyecto
-4.- Existe un array con el nombre de __INSTALLED_APPS__, al final hay que agregar el nombre de la aplicación, esto con el fin para poder unificar las tablas de administración y que contiene el proyecto por defecto con las que estamos creando.
+3. Acceder al archivo de *__settings.py__* del proyecto
+4. Existe un array con el nombre de __INSTALLED_APPS__, al final hay que agregar el nombre de la aplicación, esto con el fin para poder unificar las tablas de administración y que contiene el proyecto por defecto con las que estamos creando.
 
 ```python
 INSTALLED_APPS = [
@@ -186,7 +189,7 @@ INSTALLED_APPS = [
     'myapp', #Está es mi aplicación
 ]
 ```
-5.- Ejecutar el siguiente comando:
+5. Ejecutar el siguiente comando:
 ```python
 python manage.py makemigrations
 ```
@@ -196,7 +199,7 @@ python manage.py makemigrations myapp
 ```
 Con éste comando lo que se hace es compilar las clases.
 
-6.- Ejecutar el siguiente comando:
+6. Ejecutar el siguiente comando:
 ```python
 python manage.py migrate
 ```
@@ -209,9 +212,8 @@ Con éste comando se ejecuta todas las compilaciones de las clases para converti
 NOTA: Django viene por defecto con SQLite, en debido caso que se quiera modificar hay que hacer lo siguiente:
 
 ### 5.1) Cambiar base de datos 
-1.- Ir a *__settings.py__* del proyecto
-
-2.- Encontrar el dicionario que tiene como nombre __DATABASES__
+1. Ir a *__settings.py__* del proyecto
+2. Encontrar el dicionario que tiene como nombre __DATABASES__
 ```python
 DATABASES = {
     'default': {
@@ -220,37 +222,32 @@ DATABASES = {
     }
 }
 ```
-3.- Modificar el engine por el que se vaya a utilizar, dejo a continuación la pagina en donde se encuentra las conexiones con las demás bases de datos:
+3. Modificar el engine por el que se vaya a utilizar, dejo a continuación la pagina en donde se encuentra las conexiones con las demás bases de datos:
 ['Ir a la documentación...'](https://docs.djangoproject.com/en/4.2/ref/databases/)
  
-4.- Modificar el nombre de como se va a registrar la base de datos, recomiendo *'db.base_de_datos'*
+4. Modificar el nombre de como se va a registrar la base de datos, recomiendo *'db.base_de_datos'*
 
 *Ya para este punto existen tablas en el archivo db.sqlite3, si se quiere ver todas las tablas es necesario tener una herramienta de software que se utiliza como cliente universal para base de datos. En mi caso utilizo __dbeaver__, dejo a continuación los pasos para hacer uso de éste software gratuito.*
 ### 5.2) DBeaver
-1.- Instalar el software: [Ir a la página de descarga...](https://dbeaver.io/download/)
-
-2.- Abrir el sofware.
-
-3.- Hacer clic en el icono de un enchufe que se encuentra abajo de "File".
-
-4.- Se va abrir una pestaña nueva en donde solicita la base de datos, se va a escribir "SQLite", le damos doble clic a la primera opción que muestre.
-
-5.- Va a pedir la ubicación para indicar hay que hacer clic en "Create" y se va a localizar hasta donde encuentre el archivo correspondiente.
-
-6.- Hacer clic en "Finish"
+1. Instalar el software: [Ir a la página de descarga...](https://dbeaver.io/download/)
+2. Abrir el sofware.
+3. Hacer clic en el icono de un enchufe que se encuentra abajo de "File".
+4. Se va abrir una pestaña nueva en donde solicita la base de datos, se va a escribir "SQLite", le damos doble clic a la primera opción que muestre.
+5. Va a pedir la ubicación para indicar hay que hacer clic en "Create" y se va a localizar hasta donde encuentre el archivo correspondiente.
+6. Hacer clic en "Finish"
 Cuando sea tu primera vez con esa base de datos te va a indicar que se tiene que instalar el driver asi que lo permites y ya podrás visualizar la base de datos.
 
 !['DBeaver'](https://dbeaver.io/wp-content/uploads/2015/09/beaver-head.png)
 
 ## 6) Django shell
 Para ingresar los valores en las tablas se puede hacer de la siguiente forma:
-1.- Se ejecuta el siguiente comando:
+1. Se ejecuta el siguiente comando:
 ```python
 python manage.py shell
 ```
 Ésto activara el shell de python
 
-2.- Indicar los modelos con los que vamos a trabajar.
+2. Indicar los modelos con los que vamos a trabajar.
 ```python
 from myapp.models import Project, Task
 ```
@@ -399,7 +396,10 @@ class Task(models.Model):
     
     def __str__(self) -> str:
         return self.title + " del proyecto " + self.project.name
+        # Titulo_tarea DEL PROYECTO nombre_proyecto
 ```
 Ya sólo queda recargar la página y ver el cómo devuelve la información.
+
+
 ## __Autor__
 [@BricoBC](https://github.com/BricoBC)
