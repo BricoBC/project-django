@@ -400,6 +400,25 @@ class Task(models.Model):
 ```
 Ya sólo queda recargar la página y ver el cómo devuelve la información.
 
+## Crear plantillas html
+Para crear y hacer uso de las plantillas se tiene que hacer lo siguiente:
+
+1. Hay que crear una carpeta con el nombre de __templates__
+2. Se crea un archivo html dentro de la carpeta nueva.
+3. Se pone el código html que se quiere tener en la vista.
+4. Se abre el archivo de views.py.
+5. Se modifica la función de la vista que se vincule al html que se hizo de la siguiente forma:
+```python
+from django.shortcuts import render
+# Es necesario importar render
+
+def about(request):
+    return render(request, 'about.html')
+    #render recibe dos parametros
+    #Primero: es el request
+    #Segundo: El archivo html que se creo dentro de templates.
+```
+Después de hacer los pasos previos ya se puede ir al url de esa vista y se va a ver con forme a lo establecido al html que se creó.
 
 ## __Autor__
 [@BricoBC](https://github.com/BricoBC)
