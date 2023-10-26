@@ -322,7 +322,7 @@ urlpatterns = [
     path('about/', views.about)
 ]
 ```
-### Consumir base de datos desde la url
+### 7.1) Consumir base de datos desde la url
 Se tiene que hacer las vistas y los urls para recibir un parametro, aunque se debe de hacer los siguientes cambios:
 - Agregar las tablas que va a utilizar.
 - En caso de ser necesario, agregar JsonResponse
@@ -350,6 +350,7 @@ def task(reques, id):
     #output: Task: Titulo
 ```
 Para el archivo de urls.py, no hay mucho cambio. Se hace el mismo procedimiento que cuando mandamos parametros en la url.
+
 __URLS.PY__
 ```python
 from django.urls import path
