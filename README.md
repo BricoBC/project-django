@@ -322,7 +322,46 @@ urlpatterns = [
     path('about/', views.about)
 ]
 ```
+### Consumir base de datos desde la url
+Se tiene que hacer las vistas y los urls para recibir un parametro, aunque se debe de hacer los siguientes cambios:
+- Agregar las tablas que va a utilizar.
+- En caso de ser necesario, agregar JsonResponse
+- Agregar get_object_or_404 
 
+__VIEWS.PY:__
+```python
+from django.http import HttpResponse, JsonResponse #Se agrega JsonResponse
+from .models import Project, Task #Se agrega las tablas
+from django.shortcuts import get_object_or_404 #método para resolver un error
+
+def projects(reques):
+    p = list(Project.objects.values())
+    return JsonResponse(p, safe=False)
+    #Se devuelve en formato de Json por la abundancia de caracteres ya que de esa forma no se puede mandar como un string. 
+
+def task(reques, id):
+    # task = Task.objects.get(id=id)
+    # Se replicaria de la misma forma como en el shell..
+    task = get_object_or_404(Task, id=id)
+    # El método hace la consulta y si no existe devuelve un error 404
+    # Primer parametro: Tabla
+    # Segunda parametro: La columna
+    return HttpResponse('Task: %s' %task.title)
+    #output: Task: Titulo
+```
+Para el archivo de urls.py, no hay mucho cambio. Se hace el mismo procedimiento que cuando mandamos parametros en la url.
+__URLS.PY__
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('hi/<str:username>/', views.hi ), #Accede a la ruta, ejecuta la función.
+    path('about/', views.about),
+    path('project/', views.projects),
+    path('task/<int:id>', views.task)
+]
+```
 
 ## __Autor__
 [@BricoBC](https://github.com/BricoBC)
