@@ -295,7 +295,34 @@ Para ver todas las tareas que tiene el id 1, se hace lo siguiente:
 p = Project.objects.get(id=1)
 p.task_set.all()
 ```
+## 7) Recibir parametros de un url
+Primero se tiene que crear una vista e indicar su url, después de tener ésto hay que considerar lo siguiente:
+- El tipo de dato que tenemos que recibir
+- El nombre de la variable que se va a recibir
+
+Para saber el tipo de dato se puede saber con el siguiente método:
+```python
+print(type(username))
+```
+En mi caso quiero saber el tipo de dato de la variable __username__.
+
+En la vista que se creó, además de recibir el request se agrega el segundo parametro.
+```python
+def hi(request, username):
+    full = username + "_2509"
+    return HttpResponse("<h1>Hello world %s</h1>" %full)
+    # %s es para mandar el valor de la variable
+    # %<nombre_variable> va afuera de la cadena de caracteres, es la variable que queremos enviar
+```
+Para los urls tiene que quedar de la siguiente forma:
+```python
+urlpatterns = [
+    path('<str:username>/', views.hi ), 
+    # < tipo_de_dato : nombre_variable >/
+    path('about/', views.about)
+]
+```
 
 
-## Autor
+## __Autor__
 [@BricoBC](https://github.com/BricoBC)
