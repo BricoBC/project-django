@@ -30,7 +30,7 @@ pip install -r requirements.txt
 ```
 
 Ya una vez que se comenzó con buenas practicas no hay que olvidar estar guardando las versiones del código en cualquier repositorio web que más conocimientos se tenga.
- ## Primeros pasos: Instalación
+## 1) Primeros pasos: Instalación
  Primero hay que ubicarnos en a ubicación en donde se quiere tener el proyecto, ya una vez estando en el directorio se hace lo siguiente:
 
  1.- Instalar django:
@@ -43,7 +43,7 @@ python3 -m pip install Django
 python3 -m pip install Django
 ```
 
-## Crear el proyecto
+## 2) Crear el proyecto
 El proyecto va a tener como nombre **mysite**
 ```python
 django-admin startproject mysite .
@@ -74,7 +74,7 @@ python manage.py --help
 ```
 
 
-### Ejecutar el proyecto:
+### 2.1) Ejecutar el proyecto:
  ```python
 python manage.py runserver
 ```
@@ -83,7 +83,7 @@ En caso de tener muchos proyectos ejecutandose al mismo tiempo se puede cambiar 
 python manage.py runserver 3000
 ```
 En el ejemplo de arriba se va a direccionar al **puerto 3000**
-## Crear aplicaciones
+## 3) Crear aplicaciones
 La aplicación va a tener como nombre **myapp**
  ```python
 python manage.py startapp myapp
@@ -109,7 +109,7 @@ v myapp
 - tests.py: Es para realizar el testing de las vistas o de los archivos generados.
 - **views:** Es el fichero en donde se va a almacenar el código html para las vistas, lo que va a poder ver el usuario.
 
-## Crear un vista
+## 4) Crear un vista
 Para agregar una vista es necesario tener almenos una app y un proyecto.
 1.- Se accede al archivo de *__views.py__* de la app.
 2.- Se agrega lo siguiente al archivo:
@@ -151,7 +151,7 @@ urlpatterns = [
 7.- Ejecutar el proyecto y poner la ruta, en mi caso seria de la siguiente forma el url: *http://127.0.0.1:8000/* ó *http://127.0.0.1:8000/admin* ó *http://127.0.0.1:8000/about*, depende de la cuál quieras acceder.
 
 
-## Crear tablas de Bases de Datos
+## 5) Crear tablas de Bases de Datos
 1.- Acceder al archivo de *__models.py__* de la aplicación.
 2.- Se debe de tener el siguiente código para poder crear una tabla:
 ```python
@@ -208,7 +208,7 @@ Con éste comando se ejecuta todas las compilaciones de las clases para converti
 
 NOTA: Django viene por defecto con SQLite, en debido caso que se quiera modificar hay que hacer lo siguiente:
 
-### Cambiar base de datos 
+### 5.1) Cambiar base de datos 
 1.- Ir a *__settings.py__* del proyecto
 
 2.- Encontrar el dicionario que tiene como nombre __DATABASES__
@@ -226,7 +226,7 @@ DATABASES = {
 4.- Modificar el nombre de como se va a registrar la base de datos, recomiendo *'db.base_de_datos'*
 
 *Ya para este punto existen tablas en el archivo db.sqlite3, si se quiere ver todas las tablas es necesario tener una herramienta de software que se utiliza como cliente universal para base de datos. En mi caso utilizo __dbeaver__, dejo a continuación los pasos para hacer uso de éste software gratuito.*
-## DBeaver
+### 5.2) DBeaver
 1.- Instalar el software: [Ir a la página de descarga...](https://dbeaver.io/download/)
 
 2.- Abrir el sofware.
@@ -242,7 +242,7 @@ Cuando sea tu primera vez con esa base de datos te va a indicar que se tiene que
 
 !['DBeaver'](https://dbeaver.io/wp-content/uploads/2015/09/beaver-head.png)
 
-## Django shell
+## 6) Django shell
 Para ingresar los valores en las tablas se puede hacer de la siguiente forma:
 1.- Se ejecuta el siguiente comando:
 ```python
@@ -254,7 +254,7 @@ python manage.py shell
 ```python
 from myapp.models import Project, Task
 ```
-### Guardar un valor
+### 6.1) Guardar un valor en la BD
 
 ```python
 p = Project(name='Elaborar una página web')
@@ -263,24 +263,24 @@ p.save()
 ```
 Recordemos que mi modelo de Project, tiene la columna de __id__ que es autoincrementable y __name__ que recibe un string.
 
-### Obtener un elemento
+### 6.2) Obtener un elemento
 ```python
 Projects.objects.get(id=1)
 ```
 Con objects.get recibe como parametro el nombre de la columna y el valor exacto que se busca obtener.
 
-### Filtrar
+### 6.3) Filtrar
 ```python
 Project.objects.filter(name__startswith="Elabor")
 ```
 __output:__ *<QuerySet [<Project: Project object (1)>, <Project: Project object (2)>]>*
 
-### Salir de la consola
+### 6.4) Salir de la consola
 ```python
 exit()
 ```
 
-### Guardar un valor de una tabla dependiente
+### 6.5) Guardar un valor de una tabla conectada
 En mi caso __Task__ esta relacionada a un valor que se tenga en __Project__, asi que primero debo de asignar un proyecto y después al proyecto le asigno sus tareas, por ende su código quedaria de la siguiente forma:
 ```python
 p = Project.object.get(id=1)
@@ -297,5 +297,5 @@ p.task_set.all()
 ```
 
 
-### Autor
+## Autor
 [@BricoBC](https://github.com/BricoBC)
