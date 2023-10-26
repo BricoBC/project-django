@@ -383,7 +383,7 @@ admin.site.register(Task)
 Recargas nuevamente la página y te va a aparecer el nombre de la aplicación y las tablas que se registraron.
 Accedes a la tabla dando clic al nombre de la tabla.
 
-### Modificar la forma en como se muestra la información de la tabla
+### 8.2) Modificar la forma en como se muestra la información de la tabla
 Cuando se accede a la tabla muy probablemente salga una tabla y se enliste los datos como *"Project object(1)"*, para modificar eso hay que hacer lo siguiente:
 1. Se accede al archivo __models.py__
 2. Localizas la clase de la tabla que se va a modificar la información, en mi caso es *__Task__*
@@ -400,7 +400,7 @@ class Task(models.Model):
 ```
 Ya sólo queda recargar la página y ver el cómo devuelve la información.
 
-## Crear plantillas html
+## 9) Crear plantillas html
 Para crear y hacer uso de las plantillas se tiene que hacer lo siguiente:
 
 1. Hay que crear una carpeta dentro de la app con el nombre de __templates__
