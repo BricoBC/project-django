@@ -403,7 +403,7 @@ Ya sólo queda recargar la página y ver el cómo devuelve la información.
 ## Crear plantillas html
 Para crear y hacer uso de las plantillas se tiene que hacer lo siguiente:
 
-1. Hay que crear una carpeta con el nombre de __templates__
+1. Hay que crear una carpeta dentro de la app con el nombre de __templates__
 2. Se crea un archivo html dentro de la carpeta nueva.
 3. Se pone el código html que se quiere tener en la vista.
 4. Se abre el archivo de views.py.
