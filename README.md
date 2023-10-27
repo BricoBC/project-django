@@ -420,7 +420,7 @@ def about(request):
 ```
 Después de hacer los pasos previos ya se puede ir al url de esa vista y se va a ver con forme a lo establecido al html que se creó.
 
-### Html con variables
+### 9.1) Html con variables
 Dentro de la estructura del html se va a querer que sea dinámico, esto quiere decir que se cambie conforme a una variable que se tenga. 
 
 En mi caso voy a hacer que se reciba un dato desde la url, aunque se pueda usar una variable normal o la extracción de la base de datos.
