@@ -450,8 +450,8 @@ Occaecat voluptate culpa cupidatat ullamco dolore enim anim. Reprehenderit sint 
 </p>
 ```
 NOTA: El código que se ingresa al html que se define mediante las {{ }}, es por el módulo de jinja. A continuación dejo el enlace de su documentación: [Ver documentación...](https://jinja.palletsprojects.com/en/3.1.x/)
-## Loops
-### For
+## 10) Loops
+### 10.1) For
 Para usar el ciclo for se debe de tener una variable que permita hacer el recorrido, a continuación muestro un ejemplo:
 
 1. Crear la vista, en mi caso es la siguiente:
@@ -474,6 +474,8 @@ def projects(request):
 {% endfor %}
 ```
 NOTA: El código que se ingresa al html que se define mediante las {{ }}, es por el módulo de jinja. A continuación dejo el enlace de su documentación: [Ver documentación...](https://jinja.palletsprojects.com/en/3.1.x/)
+
+
 
 ## __Autor__
 [@BricoBC](https://github.com/BricoBC)
