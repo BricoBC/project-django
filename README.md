@@ -473,7 +473,7 @@ def projects(request):
 
 {% endfor %}
 ```
-NOTA: El código que se ingresa al html que se define mediante las {{ }}, es por el módulo de jinja. A continuación dejo el enlace de su documentación: [Ver documentación...]('https://jinja.palletsprojects.com/en/3.1.x/')
+NOTA: El código que se ingresa al html que se define mediante las {{ }}, es por el módulo de jinja. A continuación dejo el enlace de su documentación: [@Ver documentación...]('https://jinja.palletsprojects.com/en/3.1.x/')
 
 ## __Autor__
 [@BricoBC](https://github.com/BricoBC)
