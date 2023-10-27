@@ -567,7 +567,6 @@ A la hora de desarrollar sitios y aplicaciones se va haciendo extensa el conjunt
 </p>
 <!-- Se indica que aqui termina el bloque de content -->
 {% endblock  %}
-
 ```
 
 ## __Autor__
