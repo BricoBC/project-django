@@ -450,7 +450,7 @@ Occaecat voluptate culpa cupidatat ullamco dolore enim anim. Reprehenderit sint 
 </p>
 ```
 NOTA: El código que se ingresa al html que se define mediante las {{ }}, es por el módulo de jinja. A continuación dejo el enlace de su documentación: [Ver documentación...](https://jinja.palletsprojects.com/en/3.1.x/)
-## 10) Loops
+## 10) Ciclos
 ### 10.1) For
 Para usar el ciclo for se debe de tener una variable que permita hacer el recorrido, a continuación muestro un ejemplo:
 
@@ -475,7 +475,52 @@ def projects(request):
 ```
 NOTA: El código que se ingresa al html que se define mediante las {{ }}, es por el módulo de jinja. A continuación dejo el enlace de su documentación: [Ver documentación...](https://jinja.palletsprojects.com/en/3.1.x/)
 
+## 11) Condicionales
+Para definir los condicionales tendre que agregar una columna a mi tabla de Task para indicar si fue hecha o no, en caso que no necesites crear una nueva columna puedes saltarte los pasos del 1 al 6.
+1. Acceder al archivo models.py y agregar nueva columna, el código queda de la siguiente forma:
+```python
+class Task(models.Model):
+    title = models.CharField(max_length=255)
+    description = models.TextField()
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+    done = models.BooleanField(default=False)
+    #Nueva columna con el titulo de Done
+    #Por defecto tendrá el valor False. 
+```
+2. Compilar la tabla con su nueva columna, el comando recordemos que es el siguiente:
+```python
+python manage.py makemigrations
+```
+3. Ejecutar la compilación para convertirla en una tabla.
+```python
+python manage.py migrate
+```
+4. Verificar en la base de datos la nueva columna.
+5. Ir al panel de administrador para modificar los valores, recuerda que es con el url de admin/, accediendo con el usuario y contraseña que se creo para el super usuario.
+6. Modificar o agregar un nuevo valor de la tabla task para ponerla en True.
+7. Crear la vista de Task, mi código queda de la siguiente forma:
+```python
+def task(request, id):
+    task = get_object_or_404(Task, id=id)
+    return render(request, 'task.html', {
+        'task': task
+    })
+    #Lo que se manda es la fila que se consultó, en mi caso tiene la siguiente forma:
+    #task = __str__, task.id, task.title, task.description, task.project_id, task.done.
+    #Por ende estás propiedades se pueden utilizar a la hora de mandarlo a la plantilla
+```
+8. Crear la plantilla qu va a recibir la vista de Task, mi código queda de la siguiente forma:
+```python
+<h1>Tarea: {{ task }}</h1>
+#Variable que recibe es task
 
+{% if task.done == False %}
+#Se accede a su propiedad y se compara
+No se ha terminado
+{% else %}
+Tarea terminada
+{% endif %}
+```
 
 ## __Autor__
 [@BricoBC](https://github.com/BricoBC)

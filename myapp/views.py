@@ -16,12 +16,11 @@ def projects(request):
         'projects': projects
     })
 
-def task(reques, id):
-    # task = Task.objects.get(id=id)
-    # Se replicaria de la misma forma como en el shell..
+def task(request, id):
     task = get_object_or_404(Task, id=id)
-    # El método hace la consulta y si no existe devuelve un error 404
-    # Primer parametro: Tabla
-    # Segunda parametro: La columna
-    return HttpResponse('Task: %s' %task.title)
-    #output: Task: Titulo
+    return render(request, 'task.html', {
+        'task': task
+    })
+    #Lo que se manda es la fila que se consultó, en mi caso tiene la siguiente forma:
+    #tasks = __str__, tasks.id, tasks.title, tasks.description, tasks.project_id, tasks.done.
+    #Por ende estás propiedades se pueden utilizar a la hora de mandarlo a la plantilla
