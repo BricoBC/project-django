@@ -5,8 +5,8 @@
     <ul>
         <li><a href="/admin/">Ir al panel de admin</a></li>
         <li><a href="/hi/Brico/">Index</a></li>
-        <li><a href="/about/">About</a></li>
-        <li><a href="/project/">Proyectos</a></li>
+        <li><a href="{% url 'about' %}">About</a></li>
+        <li><a href="{% url 'projects' %}">Proyectos</a></li>
         <li><a href="{% url 'create_new_project' %}">Crear nuevo proyecto</a></li>
         
     </ul>
