@@ -521,6 +521,54 @@ No se ha terminado
 Tarea terminada
 {% endif %}
 ```
+## 12) Reutilizar plantillas
+A la hora de desarrollar sitios y aplicaciones se va haciendo extensa el conjunto de páginas en donde se requiere reutilizar ciertas partes como lo es el header, el nav y el footer. A continuación mostraré un ejemplo de cómo reutilizar las plantillas htmls.
+1. Crear una carpeta dentro de template con el nombre de __layout__.
+2. Crear el archivo base.html dentro de la carpeta de layout, este archivo es en donde se encontrará la base y sólo va a estar cambiando cierto bloques.
+```html
+<header>
+    DJANGO APP
+</header>
+<nav>
+    <ul>
+        <li><a href="/admin/">Ir al panel de admin</a></li>
+        <li><a href="/hi/Brico/">Index</a></li>
+        <li><a href="/About/">About</a></li>
+        <li><a href="/project/">Proyectos</a></li>
+        
+    </ul>
+</nav>
+
+{% block content %}
+{% endblock  %}
+<!-- block se utiliza para indicar que se reemplazará un contenido -->
+<!-- content es el nombre del contenido que se va a ingresar -->
+
+<footer>
+    <h4>
+        Se desarrollo con tecnología de django. 🐍
+    </h4>
+</footer> 
+```
+3. Reemplazar el bloque por el contenido que quiero, en mi caso utilizo la plantilla de hello.html:
+```html
+{% extends "layout/base.html"%}
+<!-- extends: indica que se enlazara previamente con una plantilla -->
+<!-- Nota: Debe de estar hasta arriba -->
+
+{% block  content%}
+<!-- Se indica que aqui empieza el bloque de content -->
+<h1>
+    Hola {{username}}
+</h1>
+
+<p>
+    Ex est incididunt sint aliqua ut do elit nostrud ipsum culpa cillum eu in nisi. Dolor et nisi anim eu mollit mollit tempor sunt id consequat. 
+</p>
+<!-- Se indica que aqui termina el bloque de content -->
+{% endblock  %}
+
+```
 
 ## __Autor__
 [@BricoBC](https://github.com/BricoBC)
