@@ -1,23 +1,38 @@
-<header>
-    DJANGO APP
-</header>
-<nav>
-    <ul>
-        <li><a href="/admin/">Ir al panel de admin</a></li>
-        <li><a href="/hi/Brico/">Index</a></li>
-        <li><a href="{% url 'about' %}">About</a></li>
-        <li><a href="{% url 'projects' %}">Proyectos</a></li>
-        <li><a href="{% url 'create_new_project' %}">Crear nuevo proyecto</a></li>
-        
-    </ul>
-</nav>
+{% load static %}
 
-{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django app</title>
+    <link rel="stylesheet" href="{% static '/styles/main.css' %}">
+</head>
+<body>
+    
+    <header>
+        DJANGO APP
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/admin/">Ir al panel de admin</a></li>
+            <li><a href="/hi/Brico/">Index</a></li>
+            <li><a href="{% url 'about' %}">About</a></li>
+            <li><a href="{% url 'projects' %}">Proyectos</a></li>
+            <li><a href="{% url 'create_new_project' %}">Crear nuevo proyecto</a></li>
+            
+        </ul>
+    </nav>
+    
+    {% block content %}
+    
+    {% endblock  %}
+    
+    <footer>
+        <h4>
+            Se desarrollo con tecnología de django. 🐍
+        </h4>
+    </footer> 
 
-{% endblock  %}
-
-<footer>
-    <h4>
-        Se desarrollo con tecnología de django. 🐍
-    </h4>
-</footer> 
+</body>
+</html>

@@ -638,7 +638,7 @@ POST: Envia datos al servidor web para su procesamiento.
 PUT: Actualiza datos existentes en el servidor web.
 DELETE: Elimina datos existentes en el servidor web.
 
-## 13) Urls como variables
+## 14) Urls como variables
 En el ciclo de vida de un sistema se va a hacer el mantenimiento a la aplicación y en dicho caso que sea necesario modificar algun url se va a modificar en todo lo demás como lo es en su nav, sus vistas, etc.
 Para hacer que la url tenga una variable y esa variable utilizarla en toda la aplicación seria de la siguiente forma:
 1. Ir a __urls.py__ y abrirlo.
@@ -690,6 +690,28 @@ def create_new_project(request):
 ```
 Ya si el dia de mañana que se tenga que modificar la url tal cual, ya solo se modifica en el archivo url y no afectaria al resto de la app.
 
+## 15) Cargar contenido estatico
+El contenido estatico es todo aquel archivo que no va a ser dinamico, es decir que no va a cambiar asi como lo es los archivos CSS, PDFs, Imagenes, etc.
+Para cargarlos a la app debe de seguir los siguientes pasos:
+1. Crear una carpeta dentro de la app con el nombre __static__, la carpeta debe de quedar a la misma altura que migrations.
+2. Se puede generar una subcarpeta para cargar lo que se vaya a utilizar, en mi caso le pondre __Styles__ porque creare un archivo css.
+3. Pongo los estilos que se vaya a utilizar y guardo el archivo como __main.css__
+4. En el archivo que se vaya a utilizar el archivo, hasta arriba se pone lo siguiente:
+```django
+{% load static %}
+```
+5. Cuando quiera hacer uso de la dirección como de la imagen se escribe de la siguiente forma: 
+```html
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Django app</title>
+    <link rel="stylesheet" href="{% static '/styles/main.css' %}">
+    <!-- La ruta empieza como si estuvieras ya adentro de la carpeta static -->
+</head>
+<body>
+```
+__NOTA IMPORTANTE:__ Es necesario detener el servidor y ya cuando se hizo los 5 pasos ejecutar nuevamente el servidor.
 
 ## __Autor__
 [@BricoBC](https://github.com/BricoBC)
