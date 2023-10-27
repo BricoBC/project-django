@@ -569,5 +569,74 @@ A la hora de desarrollar sitios y aplicaciones se va haciendo extensa el conjunt
 {% endblock  %}
 ```
 
+## 13) Crear formulario
+Django tiene ya tecnología desarrollada que permite desarrollar más fácil un forms. Se creara una nueva vista en donde existirá el mismo header y footer que las demás vistas, a continuación se indican los pasos:
+1. Crear la función de la vista.
+2. Crear la nueva url.
+3. Crear el html que tendrá el nuevo url, ya queda de esta forma el código.
+```django
+{% extends 'layout/base.html'%}
+
+{%block content%}
+<h2>Crear nuevo proyecto</h2>
+
+<form method="POST">
+    {% csrf_token %}
+    {# Este es necesario para que pueda mandar una llave de seguridad al servidor. Por cierto, esto es un comentario en django #}
+    {{ forms }}
+    <button>
+        Agregar
+    </button>
+</form>
+
+{% endblock content %}
+```
+4. Agregar el header y footer al nuevo html.
+5. Se crea __forms.py__ en la carpeta de la aplicación.
+6. Se agrega el siguiente código:
+```python
+from django import forms
+#Se importa de django el modulo de forms
+
+#Formulario para crear un nuevo proyecto
+class CreateNewProject(forms.Form): 
+    #Recibe como parametro la clase forms
+    nombre = forms.CharField(label = 'Titulo del proyecto', max_length=200, required=True)
+    
+#Formulario para crear una nueva tarea
+class CreateNewTask(forms.Form):
+    #Recibe como parametro la clase forms
+    title = forms.CharField(label = 'Titulo de la tarea',  max_length=200, required=True)
+    
+    description = forms.CharField(widget=forms.Textarea, label="Descripción", max_length=200,)
+```
+[Dejo la documentación para ver más del formulario](https://docs.djangoproject.com/en/4.2/ref/forms/widgets/#django.forms.Textarea)
+
+7. En el archivo views.py se agrega lo siguiente:
+```python
+from .forms import CreateNewProject
+#Importamos el archivo donde está el forms.
+from django.shortcuts import render, redirect
+
+def create_new_project(request):
+    if request.method == 'GET':    
+        return render(request, 'new_project.html', {
+            'forms': CreateNewProject()
+        })
+    else:
+        Project.objects.create(
+        # Guardar en la tabla Project
+            name = request.POST['nombre']
+            #La columna name, mando lo que se tiene en el forms.
+        )
+        return redirect('/project/')
+        #redirecciona a la página indicada en el argumento.
+```
+Existen metodos http como lo es: GET, POST, DELETE, PUT.
+GET: Es la petición de datos desde un servidor web.
+POST: Envia datos al servidor web para su procesamiento.
+PUT: Actualiza datos existentes en el servidor web.
+DELETE: Elimina datos existentes en el servidor web.
+
 ## __Autor__
 [@BricoBC](https://github.com/BricoBC)

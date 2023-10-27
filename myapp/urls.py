@@ -5,6 +5,7 @@ urlpatterns = [
     path('hi/<str:username>/', views.hi ), #Accede a la ruta, ejecuta la función.
     path('about/', views.about),
     path('project/', views.projects),
-    path('task/<int:id>', views.task)
+    path('task/<int:id>', views.task),
+    path('create_new_project/', views.create_new_project),
 ]
 

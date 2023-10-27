@@ -1,6 +1,7 @@
 from django.http import HttpResponse, JsonResponse
 from .models import Project, Task
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, render, redirect
+from .forms import CreateNewTask, CreateNewProject
 
 # Create your views here.
 def hi(request, username):
@@ -24,3 +25,16 @@ def task(request, id):
     #Lo que se manda es la fila que se consultó, en mi caso tiene la siguiente forma:
     #tasks = __str__, tasks.id, tasks.title, tasks.description, tasks.project_id, tasks.done.
     #Por ende estás propiedades se pueden utilizar a la hora de mandarlo a la plantilla
+
+def create_new_project(request):
+    if request.method == 'GET':    
+        return render(request, 'new_project.html', {
+            'forms': CreateNewProject()
+        })
+    else:
+        # Guardar en la tabla Project
+        Project.objects.create(
+            name = request.POST['nombre']
+            #La columna name, mando lo que se tiene en el forms.
+        )
+        return redirect('/project/')
