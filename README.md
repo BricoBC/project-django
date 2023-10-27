@@ -420,5 +420,36 @@ def about(request):
 ```
 Después de hacer los pasos previos ya se puede ir al url de esa vista y se va a ver con forme a lo establecido al html que se creó.
 
+### Html con variables
+Dentro de la estructura del html se va a querer que sea dinámico, esto quiere decir que se cambie conforme a una variable que se tenga. 
+
+En mi caso voy a hacer que se reciba un dato desde la url, aunque se pueda usar una variable normal o la extracción de la base de datos.
+
+Para hacer que suceda de esta forma hay que hacer los siguientes pasos:
+
+1. Hacer la estructura de la creación de una plantilla html y la conexión a su respectivo template.
+2. En el archivo __views.py__ en la función de la vista hay que agregar un último parametro el cual es un diccionario de dato en donde:
+- La llave es la forma en cómo está indicado en el html.
+- El valor es la variable
+```python
+from django.shortcuts import render
+
+def hi(request, username):
+    full_name = username + "_2509"
+    return render(request, 'hello.html', 
+            {'username': full_name} )
+            #Key: username
+            #Valor: full_name
+```
+3. Dentro del html hay que ponder la variable encerrado del simbolo de dobles llaves como se ve a continuación:
+```html
+<h1> Hola, {{ username }} </h1>
+
+<p>
+Occaecat voluptate culpa cupidatat ullamco dolore enim anim. Reprehenderit sint exercitation sunt mollit ex laborum enim deserunt Lorem sunt reprehenderit sunt exercitation nulla.
+</p>
+
+```
+
 ## __Autor__
 [@BricoBC](https://github.com/BricoBC)

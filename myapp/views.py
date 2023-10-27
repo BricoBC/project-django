@@ -4,8 +4,8 @@ from django.shortcuts import get_object_or_404, render
 
 # Create your views here.
 def hi(request, username):
-    full = username + "_2509"
-    return HttpResponse("<h1>Hello world %s</h1>" %full)
+    full_name = username + "_2509"
+    return render(request, 'hello.html', {'username': full_name} )
 
 def about(request):
     return render(request, 'about.html')
