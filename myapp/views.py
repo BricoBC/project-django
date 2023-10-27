@@ -10,10 +10,11 @@ def hi(request, username):
 def about(request):
     return render(request, 'about.html')
 
-def projects(reques):
-    p = list(Project.objects.values())
-    return JsonResponse(p, safe=False)
-    #Se devuelve en formato de Json por la abundancia de caracteres ya que de esa forma no se puede mandar como un string. 
+def projects(request):
+    projects = list(Project.objects.values())
+    return render(request, 'project.html', {
+        'projects': projects
+    })
 
 def task(reques, id):
     # task = Task.objects.get(id=id)

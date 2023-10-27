@@ -448,7 +448,30 @@ def hi(request, username):
 <p>
 Occaecat voluptate culpa cupidatat ullamco dolore enim anim. Reprehenderit sint exercitation sunt mollit ex laborum enim deserunt Lorem sunt reprehenderit sunt exercitation nulla.
 </p>
+```
 
+## Loops
+### For
+Para usar el ciclo for se debe de tener una variable que permita hacer el recorrido, a continuación muestro un ejemplo:
+
+1. Crear la vista, en mi caso es la siguiente:
+```python
+def projects(request):
+    projects = list(Project.objects.values())
+    return render(request, 'project.html', {
+        'projects': projects
+    })
+    # Mando una lista en donde están todos los valores de la tabla.
+```
+2. Crear una plantilla que recibe una variable desde la vista.
+```python
+<h1> Proyectos almacendos</h1>
+
+{% for project  in projects %}
+
+<h2> {{project.id}}.- {{project.name}} </h2>
+
+{% endfor %}
 ```
 
 ## __Autor__
