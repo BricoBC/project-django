@@ -638,5 +638,58 @@ POST: Envia datos al servidor web para su procesamiento.
 PUT: Actualiza datos existentes en el servidor web.
 DELETE: Elimina datos existentes en el servidor web.
 
+## 13) Urls como variables
+En el ciclo de vida de un sistema se va a hacer el mantenimiento a la aplicación y en dicho caso que sea necesario modificar algun url se va a modificar en todo lo demás como lo es en su nav, sus vistas, etc.
+Para hacer que la url tenga una variable y esa variable utilizarla en toda la aplicación seria de la siguiente forma:
+1. Ir a __urls.py__ y abrirlo.
+2. Modificar el código para que quede de la siguiente forma:
+```python
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('hi/<str:username>/', views.hi ), 
+    path('about/', views.about, name= 'about'),
+    # lo que se asigne a name va a ser el nombre de la variable que se va a utilizar.
+    # En este caso es about
+    path('project/', views.projects, name='projects'),
+    # En este caso es projects
+    path('task/<int:id>', views.task),
+    path('create_project/', views.create_new_project, name='create_new_project'),
+    # En este caso es create_new_project
+]
+```
+Si se quisiera cambiar en el nav quedaria de la siguiente forma:
+```html
+<nav>
+    <ul>
+        <li><a href="/admin/">Ir al panel de admin</a></li>
+        <li><a href="/hi/Brico/">Index</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/project/">Proyectos</a></li>
+        <li><a href="{% url 'create_new_project' %}">Crear nuevo proyecto</a></li>
+        <!-- Se encierra dentro de {% %} -->
+        <!-- Se pole la pabra url y a lado la variable que se indicó en urls.py -->
+        <!-- {% url 'nombre_variable'%} -->
+    </ul>
+</nav>
+```
+En las vistas quedaria de la siguiente forma:
+```python
+def create_new_project(request):
+    if request.method == 'GET':    
+        return render(request, 'new_project.html', {
+            'forms': CreateNewProject()
+        })
+    else:
+        Project.objects.create(
+            name = request.POST['nombre']
+        )
+        return redirect('projects')
+        # Redirect() indicamos el nombre de la variable tal cual en el argumento
+```
+Ya si el dia de mañana que se tenga que modificar la url tal cual, ya solo se modifica en el archivo url y no afectaria al resto de la app.
+
+
 ## __Autor__
 [@BricoBC](https://github.com/BricoBC)

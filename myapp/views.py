@@ -37,4 +37,4 @@ def create_new_project(request):
             name = request.POST['nombre']
             #La columna name, mando lo que se tiene en el forms.
         )
-        return redirect('/project/')
+        return redirect('projects')
