@@ -740,8 +740,22 @@ Para cargarlos a la app debe de seguir los siguientes pasos:
 </head>
 <body>
 ```
-__NOTA IMPORTANTE:__  Es necesario detener el servidor y ya cuando se hizo los 5 pasos se tiene que ejecutar nuevamente el servidor.
+__NOTA IMPORTANTE:__  Es necesario detener el servidor y ya cuando se hizo los 5 pasos se tiene que ejecutar nuevamente el servidor. En dicho caso que no funcione, limpiar cache del navegador.
 
+### 15.1) Dar estilos a formulario
+A continuación se muestran los pasos para darle estilos a una parte del forms que se hizo desde el módulo de python.
+
+1. Abrir el archivo forms.py
+2. Asignarle el parametro de __widgets__ en la clase que forms que se va a poner los estilos
+```python
+class CreateNewProject(forms.Form):
+    nombre = forms.CharField(label = 'Titulo del proyecto', max_length=200, required=True,
+                            widget=forms.TextInput( attrs={ 'class': 'input' } ) )
+    # widget igualamos a la etiqueta que queremos manipular
+    # se manda el parametro de attrs para los atributos.
+    # se manda un diccionario de los valores
+    # OUTPUT: En el navegador se ve class=input en la etiqueta del input
+```
 
 ## __Autor__
 [@BricoBC](https://github.com/BricoBC)

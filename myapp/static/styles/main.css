@@ -9,3 +9,8 @@ a{
 h2 a:hover{
     color: rgb(65, 66, 51);
 }
+.input{
+    background: rgb(93, 89, 27);
+    padding: 10px;
+    text-align: center;
+}
