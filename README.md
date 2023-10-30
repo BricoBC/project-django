@@ -690,7 +690,7 @@ def create_new_project(request):
 ```
 Ya si el dia de mañana que se tenga que modificar la url tal cual, ya solo se modifica en el archivo url y no afectaria al resto de la app.
 
-## 14.1) Mandar parametro al url desde la página
+### 14.1) Mandar parametro al url desde la página
 Pasos para que se pueda cambiar de página al hacer clic en un hipervinculo.
 1. Desarrollar la plantilla de la vista recibiendo variables.
 2. Desarrollar la vista haciendo la consulta de los datos.
