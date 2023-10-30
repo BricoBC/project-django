@@ -1,4 +1,11 @@
 body{
-    background-color: blanchedalmond;
+    background-color: rgb(233, 240, 153);
     font-size: 16px;
+}
+a{
+    color: #000000;
+    text-decoration: none;
+}
+h2 a:hover{
+    color: rgb(65, 66, 51);
 }

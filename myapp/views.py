@@ -38,3 +38,12 @@ def create_new_project(request):
             #La columna name, mando lo que se tiene en el forms.
         )
         return redirect('projects')
+    
+def project_tasks(request, id):
+    name_project = get_object_or_404(Project, id=id)
+    tasks = Task.objects.filter(project_id=id)
+    print(tasks)
+    return render(request, 'project_tasks.html', {
+        'project': name_project,
+        'tasks': tasks
+    })

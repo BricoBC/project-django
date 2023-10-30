@@ -690,6 +690,35 @@ def create_new_project(request):
 ```
 Ya si el dia de mañana que se tenga que modificar la url tal cual, ya solo se modifica en el archivo url y no afectaria al resto de la app.
 
+## 14.1) Mandar parametro al url desde la página
+Pasos para que se pueda cambiar de página al hacer clic en un hipervinculo.
+1. Desarrollar la plantilla de la vista recibiendo variables.
+2. Desarrollar la vista haciendo la consulta de los datos.
+3. Desarrollar el url con un parametro.
+Ya cuando se tenga la vista y el cambio de página correspondiendo a lo que se busca, para relacionar con el hipervinculado al url es de la siguiente forma:
+```html
+{% extends "layout/base.html" %}
+
+{% block content %}
+
+<h1> Proyectos almacendos </h1>
+
+{% for project  in projects %}
+
+<h2>
+    <a href="{% url 'project_details' project.id %}"> {{project.id}}.- {{project.name}} </a>
+    <!-- Palabra reservada url
+    Nombre del url o el url,
+    Parametro (En mi caso fue el id) -->
+</h2>
+
+{% endfor %}
+
+{% endblock content %}
+```
+Es importante mencionar que en mi url indique name=project_details
+
+
 ## 15) Cargar contenido estatico
 El contenido estatico es todo aquel archivo que no va a ser dinamico, es decir que no va a cambiar asi como lo es los archivos CSS, PDFs, Imagenes, etc.
 Para cargarlos a la app debe de seguir los siguientes pasos:
@@ -711,7 +740,8 @@ Para cargarlos a la app debe de seguir los siguientes pasos:
 </head>
 <body>
 ```
-__NOTA IMPORTANTE:__ Es necesario detener el servidor y ya cuando se hizo los 5 pasos ejecutar nuevamente el servidor.
+__NOTA IMPORTANTE:__  Es necesario detener el servidor y ya cuando se hizo los 5 pasos se tiene que ejecutar nuevamente el servidor.
+
 
 ## __Autor__
 [@BricoBC](https://github.com/BricoBC)
