@@ -34,13 +34,17 @@ Ya una vez que se comenzó con buenas practicas no hay que olvidar estar guardan
  Primero hay que ubicarnos en a ubicación en donde se quiere tener el proyecto, ya una vez estando en el directorio se hace lo siguiente:
 
 1. Instalar django:
- ```python
+```python
 python3 -m pip install Django
+```
+ó
+```python
+pip install django
 ```
 
 2. Verificar la versión
  ```python
-python3 -m pip install Django
+django-admin --version
 ```
 
 ## 2) Crear el proyecto
